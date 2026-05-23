@@ -58,7 +58,7 @@ Collaborative novel creation system. The human directs; the AI co-creates. Propo
 
 ### 1. Director-Co-Creator Dynamic
 
-The human is the DIRECTOR. The AI is the CO-CREATOR.
+The human is the DIRECTOR. The AI is the CO-CREATOR. **Why:** Division of labor prevents the AI from optimizing for safe choices instead of bold storytelling. The human provides taste and judgment; the AI provides options and execution.
 - Propose **2-3 options** for every meaningful decision, never just one
 - Explain tradeoffs between options in plain language
 - Human picks, mixes, or rejects. Human always has final say
@@ -66,7 +66,7 @@ The human is the DIRECTOR. The AI is the CO-CREATOR.
 
 ### 2. Dialogue-First, Templates-Second
 
-Conversation drives creation. Templates capture decisions.
+Conversation drives creation. Templates capture decisions. **Why:** Premature template-filling locks in choices before the human has thought through implications. Dialogue first ensures templates reflect real decisions.
 - Start every phase with a dialogue about vision and constraints
 - Fill templates AFTER discussion, not before
 - If the user has strong opinions, skip proposal and capture directly
@@ -74,7 +74,7 @@ Conversation drives creation. Templates capture decisions.
 
 ### 3. File-as-Memory
 
-All project state lives in human-readable markdown files in the project directory.
+All project state lives in human-readable markdown files in the project directory. **Why:** Markdown files survive tool failures, session resets, and can be read/edited by the human without any specialized software. No database lock-in.
 - Read files to restore context between sessions
 - Output updated files after every phase — the human can read and edit directly
 - No hidden state. No databases. Just markdown.
@@ -82,7 +82,7 @@ All project state lives in human-readable markdown files in the project director
 
 ### 4. Nonlinear Phase Access
 
-Phases are listed in order but are not a rigid pipeline.
+Phases are listed in order but are not a rigid pipeline. **Why:** Stories evolve during writing — a linear pipeline would force early guesses to override later discoveries. Characters grow their own logic; the system must accommodate that.
 - Jump back to any phase at any time to revise
 - Changes propagate forward (e.g., new character affects outline)
 - The state file tracks which phases are complete and which need rework
@@ -105,124 +105,21 @@ See **[references/proposal-system.md](references/proposal-system.md)** for the c
 
 ## Iron Rules (MANDATORY — EVERY WRITING SESSION)
 
-These rules are NON-NEGOTIABLE. They apply to every chapter draft, every revision, every edit. Violating the letter of these rules IS violating the spirit. No excuse — not "the user didn't ask", not "it's just a small edit", not "I'll catch it next time" — justifies skipping them.
+Non-negotiable. Apply to every draft, every revision, every edit. Full definitions in [references/iron-rules.md](references/iron-rules.md).
 
-### IR-1: POV Lock + Uncertain Assessment
+**Escalation Rule:** Same error category in two chapters → fix text AND add/strengthen a rule. AI learns from explicit rules, not text corrections.
 
-Once a chapter's POV character is set:
-- ONLY describe what the POV character can perceive (see, hear, smell, feel, think)
-- NEVER reveal other characters' thoughts/feelings unless the POV character infers them from observable behavior
-- When the POV character judges based on LIMITED info (distant sounds, brief glimpses), use hedging language ("不像" "大约" "应该是") — NOT absolute ("不是" "肯定是"). This prevents contradictions when the character later sees close-up.
-
-### IR-2: Vocabulary Register Audit (NON-MODERN SETTINGS)
-
-AI doesn't distinguish register — it only checks "correctness." These modern analytical/technical terms are FORBIDDEN in non-modern settings. Search EVERY draft. Replace on sight.
-
-| 禁用 | 替换（按语境选） |
-|------|-----------------|
-| 数据 | 观察、线索、情报、记忆、见闻 |
-| 参数 | 条件、变化、因素 |
-| 变量 | 变化、未知、变数 |
-| 指标 | 标记、征兆、迹象 |
-| 系统 | 体系、规矩、一套 |
-| 配置 | 布置、安排、部署 |
-| 模型 | 模样、形态、样子 |
-| 效率 | 效力、速度、快慢 |
-| 输入 | 传入、灌入、供给 |
-| 输出 | 产出、释放、外泄 |
-| 反馈 | 回应、反应、回馈 |
-| 优化 | 改善、调整、打磨 |
-| 模块 | 部分、部件、一截 |
-| 架构 | 构造、骨架、格局 |
-| 协议 | 约定、规矩、契约 |
-| 接口 | 交汇处、接触面、衔接 |
-
-### IR-3: Context Loading Protocol (Phase 7 Hard Limits) — AUTHORITATIVE DEFINITION
-
-> **权威声明**: 本节是上下文加载协议的唯一定义源。其他文件涉及加载优先级时，以本节为准。
-
-When writing a chapter, load context in this order — NEVER exceed the cap:
-1. **P0 (MUST load first):** 本章大纲（from outline.md）+ 前章状态快照（`state/chNNN.md`，NNN 为零填充章节号）+ 前章最后500字 + 术语一致性表 + 关键数字表（≈3000字）
-2. **P1 (Next):** 出场角色档案 + 活跃伏笔列表 + 相关里程碑 + 前两章状态 Delta Summary（≈4000字）
-3. **P2 (As needed):** 本章涉及的世界观细节 + 非活跃伏笔 + 关系网络（≈8000字）
-4. **HARD CAP: 15,000 characters total context loaded.** Exceeding this = chapter loses coherence.
-5. **Overflow protocol:** 优先保留 P0 → 压缩 P1（角色只取关键属性）→ 跳过 P2
-6. **NEVER load a prior chapter's full text.** Use state snapshots instead.
-
-### IR-4: State Extraction = Chapter Complete
-
-A chapter is NOT "done" until ALL of the following are done:
-1. `state/chNNN.md` written (immutable snapshot, NNN = zero-padded)
-2. `timeline.md` updated with scene-level entries
-3. `novel-state.md` updated (chapter summary + foreshadowing + character states)
-4. Consistency check passed (state matches chapter text + world rules)
-
-No exceptions. No "I'll do it in the next turn." The chapter draft is not presented as complete until the state is extracted.
-
-### IR-5: Anti-AI 6-Point Self-Check (Before Delivery)
-
-Before presenting any chapter draft, run these 6 checks. If any fail, DELETE AND REWRITE the offending passage. Do not patch — rewrite.
-
-1. **Show Don't Tell:** Every directly named emotion replaced with action/sensory detail?
-2. **Sentence Rhythm:** No 3+ consecutive sentences of similar length?
-3. **Dialogue Subtext:** Characters say 70% — the important content is in what they DON'T say?
-4. **Vocabulary Register:** All IR-2 words are clean? (Skip for modern/sci-fi settings where these words are register-appropriate.)
-5. **Structural Asymmetry:** No AI-typical parallel structures (排比, 对称收束)?
-6. **Punctuation Audit:** Grep all dialogue lines ending in "。" — is every one actually a statement, not a question? Any sentence containing 什么/怎么/呢/哪/谁/吗/为什么/多久/etc. MUST end with "？". This is the most common AI punctuation error. CHECK EXPLICITLY. Do not trust your writing-time judgment — verify after drafting.
-
-Do NOT present a draft that has known issues. If you catch yourself thinking any of these, STOP and fix:
-
-| Excuse | Why it's wrong |
-|--------|---------------|
-| "It's just one word" | One register mismatch breaks immersion for attentive readers |
-| "The user can fix it" | Your job is to deliver clean prose, not rough drafts |
-| "The setting is ambiguous" | When in doubt, use the safer register |
-| "This word is common enough" | Common ≠ register-appropriate |
-| "I'll catch it in revision" | Catch it NOW. Revision is for craft, not basic compliance |
-
-### IR-6: Prose Iron Laws (7 Rules — DELETE AND REWRITE on violation)
-
-1. **Narrator never concludes for the reader.** Delete any sentence that spells out what the reader should infer. ("他这么做是为了让小王信任他" → DELETE. Show the behavior, let readers infer.)
-2. **No analytical language in prose.** "核心动机""利益最大化""信息边界""权衡利弊" — DELETE on sight in narrative prose. These are writing tools, not story words. (Exception: acceptable in dialogue when a character's profession or personality would naturally use such language.) Replace with behavior: "他把两份合同并排放在桌上，盯着看了十分钟，签了左边那份。"
-3. **Surprise markers rate-limited.** "仿佛/忽然/竟/竟然/猛地/猛然/不禁/宛如/骤然/陡然" combined max 1 per 3000 chars. Exceed this → DELETE excess markers, rewrite with action/scenes instead.
-4. **Same sensation max 2 rounds.** 3rd repetition of any sensation → DELETE and switch to new info/action. "心跳加速→心脏狂跳→心脏跳出来" = 3rd round fails.
-5. **Planning terms never in chapter text.** "处境""动机""信息边界" stay in notes. Found in chapter text → DELETE, translate to scenes and actions.
-6. **Hard bans — zero tolerance.** "不是...而是..." construction: DELETE entire sentence, rewrite. "——" em-dash: max one per sentence. Both are AI markers visible at a glance.
-7. **Questions must use "？" — zero tolerance.** Any dialogue or interior monologue that is grammatically a question (contains 什么/怎么/呢/哪/谁/吗/为什么/怎么办/多久/什么时候/在哪 etc.) MUST end with "？", never "。". Flat/cold tone is achieved through word choice and sentence structure, NEVER by replacing "？" with "。". AI over-applies this pattern to all characters indiscriminately. Found → replace with "?" immediately.
-
-### IR-7: Cool Point Engineering (Web Novel Satisfaction)
-
-**Formula:** 满足感 = 压抑深度 × 兑现力度 × 意外程度
-
-**6 Core Modes:**
-
-| Mode | Beat Structure | Payoff Signature |
-|------|---------------|-----------------|
-| 装逼打脸 | 被轻视→底线触发→一击碾压 | 全场震惊 (needs 3 factions: mockers/shocked/smug) |
-| 扮猪吃虎 | 隐藏目的→危机→身份暴露 | 关系重组 (must have logical reason for hiding) |
-| 越级反杀 | 差距悬殊→伏笔激活→以巧胜拙 | 有代价的胜利 (zero-cost = hollow) |
-| 打脸权威 | 权威压制→坚持→权威动摇 | 被承认 (authority need not be evil) |
-| 反派翻车 | 反派布局→意外→连锁崩盘 | 自食其果 (信息差 drives tension) |
-| 甜蜜超预期 | 情感压抑→一方主动→超预期甜蜜 | 关系升级 (方式/时机/深度, one exceeds expectation) |
-
-**Density Rules:** Every 2-3 chapters ≥ 1 micro payoff. Every 5 chapters ≥ 1 combo climax. Every 10-15 chapters ≥ 1 milestone climax. Below minimum = readers drift. **Rotation rule:** consecutive payoffs must use different modes.
-
-**Structure:** 30/40/30 for single-chapter payoff (铺垫/爆发/余波). 60/20/20 for cross-chapter arc.
-
-**Extended modes:** 迪化误解 + 身份掉马 — see [references/excitement-engineering.md](references/excitement-engineering.md) Section 1.3.
-
-### IR-8: Psychology 3-Layer + Emotion 4-Level
-
-**3 Psychology Layers** — use all three, not just the surface:
-- **Conscious** (意识): character actively thinks. "他明白现在不能冲动。" Use for decisions and rational judgment.
-- **Subconscious** (潜意识): behavior contradicts words. Checks door lock three times, says "just being careful." Use for depth and hidden motivation.
-- **Unconscious** (无意识): body betrays truth. Says "I'm fine", hand grips table edge white. Use for dramatic tension — reader sees what character doesn't.
-
-**4 Emotion Intensity Levels** — match scale to importance, never mismatch. 详细技巧见 [emotion-psychology.md](references/emotion-psychology.md)：
-- **Level 1** (日常, ~10 chars): "他皱了下眉。" One beat.
-- **Level 2** (明显, ~30 chars): 1 action + 1 reaction. "她的手顿了一下，指尖发凉。"
-- **Level 3** (强烈, ~50 chars): External + internal. "他猛地站起来，椅子撞上墙。胸口像被攥住——不能在这里崩掉。"
-- **Level 4** (爆发, 100-200 chars): Multi-layer: behavior + sensation + decision. Reserve for climactic moments.
+| IR | Title | One-Line Summary |
+|----|-------|-----------------|
+| IR-1 | POV Lock | Only describe what POV character perceives. Limited info → hedging language, not absolutes. |
+| IR-2 | Vocabulary Register Audit | 16 modern terms forbidden in non-modern settings. Replace on sight. |
+| IR-3 | Context Loading Protocol | P0→P1→P2 loading order. 15K char hard cap. Never load full prior chapter. Load milestone direction, not chapter-level outline entries. |
+| IR-4 | State Extraction = Complete | Chapter not done until state snapshot + timeline + novel-state updated. |
+| IR-5 | Anti-AI 9-Point Self-Check | Pre-delivery: Show Don't Tell, Rhythm, Subtext, Register, Asymmetry, Punctuation, Meta-Markers, Citation, Voice Swap. Any fail → rewrite. |
+| IR-6 | Prose Iron Laws (9 Rules) | Narrator never concludes. No analysis-speak. Surprise markers limited. Max 2 same sensation. No planning terms. Hard bans on "不是...而是..." / excessive "——". Questions use "？". No meta-markers. Numbers pass plausibility. |
+| IR-7 | Cool Point Engineering | Satisfaction = Oppression × Delivery × Surprise. Density: 2-3ch ≥ 1 micro, 5ch ≥ 1 combo, 10-15ch ≥ 1 milestone. Full modes in [excitement-engineering.md](references/excitement-engineering.md). |
+| IR-8 | Psychology 3-Layer + Emotion 4-Level | Use Conscious/Subconscious/Unconscious layers. Match emotion intensity (1-4) to importance. Full techniques in [emotion-psychology.md](references/emotion-psychology.md). |
+| IR-9 | Citation Integrity — Zero Fabrication | Verify ALL factual claims with tool calls before asserting. Never fabricate quotes. Never cite summaries as file content. Mark unverified claims as [未验证]. |
 
 ---
 
@@ -254,7 +151,7 @@ Phase 1 ──> Phase 2 ──> Phase 3 ──> Phase 4 ──> Phase 5 ──> 
 
 ## Workflow Steps
 
-> **⚠️ PHASE LOADING RULE:** Before entering ANY phase below, you MUST Read the reference files listed in that phase's PRE-LOAD line. Skipping the Read = skipping the rules = producing inferior work. No exceptions.
+> **⚠️ PHASE LOADING RULE:** Before entering ANY phase below, MUST Read the reference files listed in that phase's PRE-LOAD line. Skipping the Read = skipping the rules = producing inferior work. No exceptions.
 
 ### Phase 1: Project Setup
 
@@ -335,6 +232,8 @@ Design the structural backbone before filling in details.
 3. **Map major turning points** and their emotional targets
 4. **Create `plot.md`** with structure, central conflict, key turning points, and thematic throughlines
 
+**⚠ 规划深度限制（防止过早锁定）：** 只详细规划前两个卷的转折点和角色弧线。第三卷及以后只写方向性描述（"主角失去一切"），不写具体节拍。远期内容在写作推进到时再细化——到那时，角色和情节已经长出了自己的逻辑，规划会更准确。过早细化远期 = 把猜测当承诺。
+
 Output file: `plot.md`
 Template: [templates/plot.md](templates/plot.md)
 Detailed guide: [references/plot-architecture.md](references/plot-architecture.md)
@@ -354,6 +253,12 @@ Plan the story's milestone architecture. NOT a per-chapter script — a roadmap 
 5. **Create `outline.md`** with volume overview + milestones + tension direction
 6. **Create `timeline.md`** for scene-level time tracking (updated after each chapter)
 7. **Create `foreshadowing-ledger.md`** for foreshadowing tracking (initially empty, populated from Phase 8)
+
+**⚠ 规划深度递减原则（防止锚定过死）：**
+- **当前卷（即将写的卷）**：可以列里程碑 + 章节级条目（如黄金三章等关键章节）
+- **下一卷**：只列里程碑 + 方向性描述。不列章节级细节。
+- **更远的卷**：只写卷级概述（Central Question + Start/End State）。连里程碑都不细化。
+- 原则：写作推进到某卷时，再回头细化该卷的规划。到那时，前文已写的内容会告诉你角色真正需要什么——而不是靠 Phase 6 时的猜测。
 
 Output: `outline.md` (volumes + milestones), `timeline.md` (empty initially), `foreshadowing-ledger.md` (initially empty)
 Detailed guide: [references/outline-template-guide.md](references/outline-template-guide.md)
@@ -390,13 +295,13 @@ NOVEL_FORGE_PREFLIGHT_B: direction_proposed=pass|fail user_selected=pass|fail ir
 ```
 `direction_proposed=pass` requires 2-3 options actually shown to user. `user_selected=pass` requires explicit user pick/blending. BOTH must be pass before drafting.
 
-1. **Propose 2-3 direction options** for this chapter based on: current volume milestones, prior chapter state snapshot, and where the story wants to go next
+1. **Propose 2-3 direction options** for this chapter based on: current volume milestones, prior chapter state snapshot, and where the story wants to go next. **NOT based on pre-written chapter-level outline entries.** Those entries are Phase 6 guesses — use them as ONE input among many, not as the answer. The best direction often comes from what characters actually DID in the last chapter, not from what was planned months ago.
 2. **User selects** a direction (or proposes their own, or blends options) — DO NOT draft until user has explicitly chosen
    - *Optional: if user requests writing guidance, activate coach mode — offer 2-3 opening versions, annotate techniques, provide alternate key-scene versions, and post-writing self-assessment. See [references/advanced-workflows.md](references/advanced-workflows.md) Section 一.*
 3. **Load context per IR-3** (P0→P1→P2, 15K char cap, never load full prior chapter)
 4. **State PREFLIGHT_B** — declare all gates pass before drafting
 5. **Draft the chapter** following Iron Rules IR-1 (POV lock), IR-2 (register audit), IR-5 (anti-AI check), IR-6 (prose iron laws), IR-7 (cool point), IR-8 (psychology layers)
-6. **Self-review**: IR-5 5-point check + IR-6 iron laws + quality score >= 12/20（评分标准见 [pre-writing-brief.md](references/pre-writing-brief.md) Section 3.1 十大标准20分制）
+6. **Self-review**: IR-5 9-point check + IR-6 9 iron laws + quality score >= 12/20（评分标准见 [pre-writing-brief.md](references/pre-writing-brief.md) Section 3.1 十大标准20分制）
 7. **Write chapter file** to `chapters/chapter-NNN.md`
 8. **IMMEDIATELY execute Phase 8** — per IR-4, the chapter is not done until state is extracted (Phase 8 handles timeline update)
 

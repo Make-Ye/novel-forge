@@ -4,6 +4,8 @@
 
 The outline is a ROADMAP, not a SCRIPT. It defines where the story must go (milestones) and trusts the writing process to discover how to get there. Per-chapter detail is filled during Phase 7 through collaborative discussion — never pre-scripted.
 
+**⚠ 锚定效应警告：** 大纲里写下来的任何内容都会被 AI 当作"应该发生的事"。章节级条目写得越多，Phase 7 的方向选项就越围绕预设内容打转，写作就越死。解决方法不是"写更好的大纲"——而是"写更少的大纲"。只锁定必须发生的里程碑，其余全部留给 Phase 7 的讨论和发现。详见 SKILL.md Phase 6 规划深度递减原则。
+
 > **权威参考声明：** 张力曲线的理论模型、反单调规则、特殊节奏技巧等均在 `pacing-curve-reference.md` 中定义。本文档覆盖 APPLICATION 层——如何将张力理论转化为大纲中的里程碑结构。
 
 ---
@@ -106,6 +108,36 @@ PASS:
 FAIL:
   Ch1:4  Ch2:5  Ch3:7  Ch4:9  Ch5:6 ...
   问题：逐章预设张力值。AI会把这些当指标去执行，写出来的节奏是算出来的。
+```
+
+### Long Milestone Rhythm (跨度 >4 章的里程碑)
+
+当里程碑跨越 4+ 章时，不要把所有章节都填成"铺垫"——那样会变成 checklist 节奏。每 2-3 章应该形成一个有呼吸的弧线单元。
+
+```
+FAIL:
+  M4 (Ch10-18):
+    Ch10: 新信息A
+    Ch11: 新信息B
+    Ch12: 新信息C
+    Ch13: 新信息D
+    Ch14: 新信息E
+    Ch15: 新信息F
+    ...
+  问题：每章都在喂信息，读者感觉在看完清单。没有消化空间。
+
+PASS:
+  M4 (Ch10-18):
+    Ch10-11: 蓄力 — 建立赌注，角色深入，埋种子
+    Ch12: 转折/兑现 — 前两章积累的张力在此爆发
+    Ch13: 消化 — 角色反应和后果，不引入新的重大信息
+    Ch14-15: 下一轮蓄力 — 基于Ch12的后果建立新赌注
+    Ch16: 第二次转折/兑现 — 规模更大的爆发
+    Ch17-18: 收束 + 为下个里程碑铺垫
+  为什么好：信息交付有节奏感，读者有时间感受后果，每个兑现都有情感重量。
+```
+
+**关键原则：** 大纲层面只标记弧线单元的节奏骨架（蓄力/转折/消化），不预设每章具体内容。Phase 7 讨论中填充细节。详见 chapter-writing-guide.md Multi-Chapter Breathing。
 
 PASS:
   Tension Direction: Rising (↗) — 从陌生环境的不安感起步，经过第一次危机建立威胁，

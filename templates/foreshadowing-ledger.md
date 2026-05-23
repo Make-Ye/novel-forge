@@ -11,10 +11,11 @@
 <!-- Items that have NOT yet been resolved. These are PLANTED or WATERED. -->
 <!-- 四态体系：PLANTED（已埋）/ WATERED（已推进）/ HARVESTED（已兑现，移至下方表格）/ WITHERED（已废弃，移至下方表格）。 -->
 <!-- 紧迫度层级：核心（权重3.0，目标50-300章回收）/ 副线（权重2.0，30-100章）/ 装饰（权重1.0，10-30章）-->
+<!-- ⚠ Expected Payoff 用弹性范围（如"Vol.2 中段""下一个高潮弧线"），不用固定章节号。原因：固定章节号创造隐形合同——"说了 Ch26 就得 Ch26"，限制了写作时的发现空间。Planted Ch. 用实际章节号（已发生的事实），但回收目标保持弹性。 -->
 
 | ID | Description | Planted Ch. | State | Tier | Urgency | Expected Payoff | Actual Payoff | Notes |
 |----|-------------|-------------|-------|------|---------|-----------------|---------------|-------|
-| <!-- FS-XXX-NN --> | <!-- What the foreshadowing element is --> | <!-- Ch.XXX --> | <!-- PLANTED / WATERED --> | <!-- 核心/副线/装饰 --> | <!-- Normal/WARNING/CRITICAL --> | <!-- When/how it should resolve --> | <!-- Filled at harvest --> | <!-- Watering history, authorial intent --> -->
+| <!-- FS-XXX-NN --> | <!-- What the foreshadowing element is --> | <!-- Ch.XXX --> | <!-- PLANTED / WATERED --> | <!-- 核心/副线/装饰 --> | <!-- Normal/WARNING/CRITICAL --> | <!-- 弹性范围：如"Vol.2中段""下个高潮弧线""10-15章内"。不用"Ch26" --> | <!-- Filled at harvest --> | <!-- Watering history, authorial intent --> -->
 | | | | | | | | | |
 
 ---

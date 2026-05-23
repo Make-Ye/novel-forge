@@ -116,8 +116,11 @@ new_string: |
 - [ ] Emotional moments earn their impact (not declared)
 - [ ] No "as you know, Bob" dialogue
 - [ ] Dialogue voices are distinct per character
+- [ ] 对话通过换说测试（IR-5 Check 9：≥3行对话段落中，交换说话人后不应仍然自然；信息清单式对话等重罗列必须重写）
 - [ ] 高风险词汇密度 ≤ 5个/千字
 - [ ] 惊讶词密度 ≤ 1次/3000字（IR-6 Rule 3）
+- [ ] 无元叙事标记泄漏（grep `Ch\d+` `第\d+章` `FS-\d+` 零匹配）（IR-5 Check 7, IR-6 Rule 8）
+- [ ] 关键数字通过物理合理性检查（IR-6 Rule 9）：时间线连续、脉搏60-100bpm范围、距离/方位与已建立空间一致、旅行速度与交通方式匹配、计数前后一致
 
 ---
 

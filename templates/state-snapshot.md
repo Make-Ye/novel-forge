@@ -155,6 +155,30 @@
 
 ---
 
+## Reader Knowledge Delta
+
+> 角色知识 ≠ 读者知识。专家型/原住民/重生型角色可能早已了解所有规则，但读者是第一次接触。此部分追踪**读者**通过本章实际理解了什么，而非角色知道什么。
+
+### 本章读者获得的新认知
+<!-- 读者通过本章理解了哪些世界规则/体系/设定？角色可能早已知道，但读者是第一次 -->
+
+| 知识点 | 类别 | 传达方式 | 传达充分度 |
+|--------|------|---------|-----------|
+| <!-- 读者学到了什么 --> | <!-- 力量体系 / 社会规则 / 地理 / 历史 / 势力 / 技能 / 其他 --> | <!-- 展示后果 / 对比差异 / 新手角色视角 / 回忆片段 / 对话解释 / 环境暗示 / 其他 --> | <!-- 充分 / 部分 / 仅标签 --> |
+
+<!-- "仅标签" = 读者只知道名称（如"引灵境"），不理解含义/规则/后果 → 标记为下方"认知缺口" -->
+
+### 读者认知缺口（已知未传达）
+<!-- 从 world.md Reader Delivery Tracker 或前章 state snapshot 继承未传达项目 -->
+
+| 缺口知识点 | 缺口来源 | 后续情节依赖度 | 持续未传达章数 |
+|-----------|---------|--------------|--------------|
+| <!-- 需要传达但尚未传达 --> | <!-- Surface层标注 / 前章继承 --> | <!-- 高（近期情节需要）/ 中 / 低 --> | <!-- N章 --> |
+
+<!-- 规则：连续 ≥3 章出现同一"认知缺口"且"依赖度=高" → 下一章必须安排传达场景 -->
+
+---
+
 ## Delta Summary (for quick reference)
 
 <!-- 3-5 bullet points of the most important changes -->
@@ -171,6 +195,7 @@
 - [ ] Relationship changes confirmed
 - [ ] Foreshadowing updates accurate
 - [ ] Knowledge states correct
+- [ ] Reader Knowledge Delta captured (传达充分度 assessed)
 - [ ] Timeline consistent
 - [ ] Open questions captured
 - [ ] User has reviewed and approved

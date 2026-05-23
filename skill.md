@@ -295,7 +295,7 @@ NOVEL_FORGE_PREFLIGHT_B: direction_proposed=pass|fail user_selected=pass|fail ir
 ```
 `direction_proposed=pass` requires 2-3 options actually shown to user. `user_selected=pass` requires explicit user pick/blending. BOTH must be pass before drafting.
 
-1. **Propose 2-3 direction options** for this chapter based on: current volume milestones, prior chapter state snapshot, and where the story wants to go next. **NOT based on pre-written chapter-level outline entries.** Those entries are Phase 6 guesses — use them as ONE input among many, not as the answer. The best direction often comes from what characters actually DID in the last chapter, not from what was planned months ago.
+1. **Propose 2-3 direction options** for this chapter based on: current volume milestones, prior chapter state snapshot (including Reader Knowledge Delta), reader knowledge gaps (from world.md Reader Delivery Tracker + prior snapshot's 读者认知缺口), and where the story wants to go next. **NOT based on pre-written chapter-level outline entries.** Those entries are Phase 6 guesses — use them as ONE input among many, not as the answer. Each direction option should note: (a) what reader knowledge it delivers or advances, and (b) what reader knowledge it requires readers to already have. If required knowledge is undelivered, the option must include a delivery mechanism (展示后果/对比/新手视角/回忆/对话 — never "As You Know, Bob").
 2. **User selects** a direction (or proposes their own, or blends options) — DO NOT draft until user has explicitly chosen
    - *Optional: if user requests writing guidance, activate coach mode — offer 2-3 opening versions, annotate techniques, provide alternate key-scene versions, and post-writing self-assessment. See [references/advanced-workflows.md](references/advanced-workflows.md) Section 一.*
 3. **Load context per IR-3** (P0→P1→P2, 15K char cap, never load full prior chapter)
@@ -323,17 +323,18 @@ After each chapter, create an immutable state snapshot file AND update supportin
 7. **Record new elements**: new proper nouns, new locations, new props introduced
 8. **Record open questions**: questions raised, still open, or answered this chapter
 9. **Verify new lore elements** against world.md and characters/ — add consistent new elements to canon files
-10. **Update `timeline.md`** with scene-level entries for this chapter
-11. **Update `novel-state.md`**: add chapter summary to 章节摘要 table, update 活跃伏笔摘要（类型/紧迫度从 foreshadowing-ledger.md 同步）, update 角色状态摘要, update 术语一致性表 and 关键数字表, update current_chapter counter
-12. **Update `knowledge-state.md`**: merge snapshot knowledge changes into cumulative file
-13. **Write Delta Summary**: 3-5 bullet points of the most important changes for quick reference by next chapter
-14. **Run consistency check**: verify state snapshot against chapter text and world rules, flag contradictions
+10. **Reader knowledge audit**: identify what the READER learned this chapter (separate from character knowledge), assess delivery sufficiency (full / partial / label-only), check world.md Reader Delivery Tracker for unfilled items, update state snapshot's Reader Knowledge Delta. Flag gaps persisting ≥3 chapters as "must deliver next chapter"（详见 state-extraction-guide.md §8）
+11. **Update `timeline.md`** with scene-level entries for this chapter
+12. **Update `novel-state.md`**: add chapter summary to 章节摘要 table, update 活跃伏笔摘要（类型/紧迫度从 foreshadowing-ledger.md 同步）, update 角色状态摘要, update 术语一致性表 and 关键数字表, update current_chapter counter
+13. **Update `knowledge-state.md`**: merge snapshot knowledge changes into cumulative file
+14. **Write Delta Summary**: 3-5 bullet points of the most important changes for quick reference by next chapter
+15. **Run consistency check**: verify state snapshot against chapter text and world rules, flag contradictions
 
-Output: `state/chNNN.md` (immutable snapshot) + updated `novel-state.md` + updated `timeline.md` + updated `foreshadowing-ledger.md` + updated `knowledge-state.md` + updated `world.md` (if new lore)
+Output: `state/chNNN.md` (immutable snapshot, including Reader Knowledge Delta) + updated `novel-state.md` + updated `timeline.md` + updated `foreshadowing-ledger.md` + updated `knowledge-state.md` + updated `world.md` (if new lore or Reader Delivery Tracker update)
 Template: [templates/state-snapshot.md](templates/state-snapshot.md)
 Detailed guide: [references/state-extraction-guide.md](references/state-extraction-guide.md)
 Consistency system: [references/consistency-system.md](references/consistency-system.md)
-Quality gate: state snapshot written, novel-state.md updated, timeline updated, no contradictions with prior state
+Quality gate: state snapshot written (including Reader Knowledge Delta), novel-state.md updated, timeline updated, no contradictions with prior state
 
 ---
 

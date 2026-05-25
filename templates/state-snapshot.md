@@ -68,10 +68,10 @@
 ## Foreshadowing Updates
 <!-- 四态：PLANTED（新埋）/ WATERED（推进）/ HARVESTED（兑现）/ WITHERED（废弃）。DEFER 不记录（状态不变）。操作→状态映射详见 pre-writing-brief.md Section 7。 -->
 
-| ID | Action | Detail |
-|----|--------|--------|
-| <!-- FS-XXX-NN --> | <!-- PLANTED / WATERED / HARVESTED / WITHERED --> | <!-- What happened --> |
-| <!-- FS-XXX-NN --> | <!-- Action --> | <!-- What happened --> |
+| ID | Action | Detail | 无接触章数 | 生命周期状态 |
+|----|--------|--------|-----------|------------|
+| <!-- FS-XXX-NN --> | <!-- PLANTED / WATERED / HARVESTED / WITHERED --> | <!-- What happened --> | <!-- 自上次PLANTED/WATERED以来的章数 --> | <!-- pass/浇水候选(≥15)/WARNING(≥30)/MUST_RESOLVE(≥50) --> |
+| <!-- FS-XXX-NN --> | <!-- Action --> | <!-- What happened --> | <!-- count --> | <!-- status --> |
 
 ### New Items Proposed
 | Proposed ID | Description | Expected Payoff |
@@ -143,7 +143,15 @@
 2. 与现有正典矛盾 → CONFLICT，作者必须解决
 3. 新元素且与正典一致 → NONE，标记待添加到正典文件
 4. 正典中已有暗示但现在明确化 → CONFIRMED
+5. 对每个新元素判定应写入哪个文件：world.md / plot.md / outline.md / prose_style.md
 -->
+
+### 涌现设定捕获
+- 本章是否创造了设定文件中原本不存在的新设定：<!-- 是/否 -->
+- 如果是：
+  | 新设定 | 所属文件 | 重大/细节 | 一致性 | 后续影响 |
+  |--------|---------|----------|--------|---------|
+  | <!-- setting --> | <!-- file --> | <!-- 重大/细节 --> | <!-- 一致/CONFLICT --> | <!-- 描述 --> |
 
 ---
 
@@ -179,6 +187,69 @@
 
 ---
 
+## 读者体验 Delta
+
+### 情感范围
+- 主导情感：<!-- 本章最主要的情感类别 -->
+- 近5章分布：<!-- 列出最近5章的主导情感，用逗号分隔 -->
+- 连续同情感：<!-- 已连续几章出现同一主导情感 -->
+- 状态：<!-- pass / WARNING(≥3连续同情感) / MUST_CHANGE(≥5连续同情感) -->
+
+### 互动密度
+- 本章是否有实质性互动：<!-- 是/否 — 实质性互动 = 对话≥3轮 或 联合行动≥1场景 -->
+- 连续无互动章数：<!-- 连续几章无实质性互动 -->
+- 状态：<!-- pass / WARNING(≥3连续无互动) / MUST_ADD(≥5连续无互动) -->
+
+### 承诺兑现
+<!-- 检查 title-synopsis.md / plot.md / outline.md 中的承诺 -->
+- 本章兑现承诺：<!-- 本章兑现了哪些承诺，没有则写"无" -->
+- 超期未兑现承诺：<!-- 超过10章未兑现的承诺列表 -->
+
+### 爽点传递
+- 本章爽点类型：<!-- 无则写"无" -->
+- 距上次同类型爽点：<!-- N章前 -->
+- 距上次里程碑爽点：<!-- N章前 -->
+- 距上次微兑现：<!-- N章前 -->
+
+### 读者体验目标验证
+<!-- 对照 pre-writing-brief.md Segment 8 设定的目标 -->
+- 设定目标：<!-- 写前设定的1-2个情感目标 -->
+- 达成判定：<!-- 达成/部分达成/未达成 -->
+- 依据：<!-- 判定依据 -->
+
+### 类型承诺对齐
+<!-- 对照 title-synopsis.md（主题材/副题材/核心卖点） -->
+- 本章主导叙事活动：<!-- 一两个词概括 -->
+- 与类型承诺对齐：<!-- 是/否 -->
+- 连续偏离章数：<!-- 连续几章未对齐 -->
+- 状态：<!-- pass / WARNING(≥3连续偏离) / MUST_ALIGN(≥5连续偏离) -->
+
+### 活动多样性
+- 本章主角主要活动：<!-- 一两个词 -->
+- 与前 3 章活动对比：<!-- 相同/不同 -->
+- 连续同活动章数：<!-- count -->
+- 状态：pass / WARNING(≥3) / MUST_VARY(≥5)
+
+### 世界观交付
+- 本章是否交付了新的世界规则/机制认知：<!-- 是（简述内容）/否 -->
+- 交付方式：<!-- 冲突中/对话中/观察中/— -->
+- 连续未交付章数：<!-- count -->
+- 状态：pass / WARNING(≥8) / CRITICAL(整卷无)
+
+### 思维留白
+- 本章推理展示段数：<!-- count -->
+- 其中完整链条：<!-- count -->
+- 角色困惑/误判段数：<!-- count -->
+- 状态：pass / WARNING(完整链>0)
+
+### 时间节奏
+- 本章故事时间跨度：<!-- N小时 / 一天 / 数天 / 更长 -->
+- 章首时间 → 章末时间：<!-- Day X 时辰 → Day X+? 时辰 -->
+- 连续<24h章数：<!-- count -->
+- 状态：pass / WARNING(≥5) / MUST JUMP(≥8)
+
+---
+
 ## Delta Summary (for quick reference)
 
 <!-- 3-5 bullet points of the most important changes -->
@@ -196,6 +267,14 @@
 - [ ] Foreshadowing updates accurate
 - [ ] Knowledge states correct
 - [ ] Reader Knowledge Delta captured (传达充分度 assessed)
+- [ ] 读者体验 Delta captured (情感范围/互动密度/承诺兑现/爽点/体验目标/类型承诺对齐/活动多样性/世界观交付/思维留白)
+- [ ] 活动多样性已评估
+- [ ] 世界观交付已评估
+- [ ] 思维留白已审计（完整推理链已扫描）
+- [ ] 伏笔生命周期已检查（浇水/过期/强制结算阈值）
+- [ ] 伏笔兑现已验证（如本章有 HARVEST，已回读原始 state snapshot）
+- [ ] 设定缺口已识别（方向提案阶段）
+- [ ] 涌现设定已捕获（Phase 8 提取阶段）
 - [ ] Timeline consistent
 - [ ] Open questions captured
 - [ ] User has reviewed and approved

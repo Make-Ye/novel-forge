@@ -34,6 +34,15 @@ World-building documents are LIVING FILES that grow with the story, not encyclop
 
 The ratio should be approximately: Pre-setting 30% / Emergent 50% / Just-in-time 20%.
 
+**操作性原则（Operational Principles）：**
+
+这些原则不是哲学宣言——它们必须在 Phase 7/8 的每一步中得到执行。
+
+1. **Phase 7 方向提案时**，每个选项必须评估设定缺口——"这个场景需要什么 world.md 里还没有的东西？"（详见 chapter-writing-guide.md "设定缺口识别"）
+2. **重大缺口**（新区域/新势力/新体系规则）→ 写前规划并写入对应文件。**细节缺口**（一个地方的风俗/一种物品/一条暗规）→ 写作中涌现，Phase 8 捕获。
+3. 设定缺口不是问题，是机会。如果连续 3 章都没有任何新设定涌现 → 考虑是否世界太封闭，主角没有遇到新事物。
+4. **比例追踪：** 在卷末审计时，统计本卷新增设定中三类比例——预设/涌现/即时。如果涌现 <30%，说明写作过程太保守，没有让世界自然生长。
+
 ---
 
 ## Stop-Loss Mechanism: When Is World-Building DONE?

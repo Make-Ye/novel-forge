@@ -16,7 +16,13 @@ Characters are stored in a dedicated `characters/` directory with two tiers:
 | **Tier 1: Main** | POV characters + frequently appearing main cast (3-5 per story) | `characters/main/` | Full 3-layer model + voice profile + arc |
 | **Tier 2: Supporting** | Characters appearing ≥2 times, one-scene characters with key function | `characters/supporting/` | Brief profile: identity / first appearance / known info / current status / narrative function |
 
+**文件命名规则:** 角色文件名使用角色中文名（如 `characters/main/苏途.md`、`characters/supporting/周平.md`）。不使用拼音或英文翻译。
+
 **Upgrade rule:** When a supporting character appears ≥3 times OR gains important plot function, move their file from `supporting/` to `main/` and expand to full 3-layer profile.
+
+**命名规则:** 占位名（甲/乙/壮人/高瘦/灰衣 等标签）只能用于一次性角色。角色在本弧线内出场 ≥2 次时必须给予正式名字。Phase 7 方向提案时检查：涉及的角色是否仍使用占位名？如果是，方向选项必须包含命名安排。Phase 8 状态提取时检查：角色第二次出场仍用占位名 → WARNING。详见 iron-rules.md "角色命名与档案规则"。
+
+**出场追踪:** novel-state.md "角色出场追踪"表记录每个角色的累计出场章数和档案状态。Phase 8 每章更新。达到 3 章 → 需创建档案（supporting/）。达到 5 章 → 需升级（main/）。每 5 章审计检查是否有角色超期无档案。
 
 **Creation timing:**
 - Tier 1 characters are created in Phase 4 (before writing starts)

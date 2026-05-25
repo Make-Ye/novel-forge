@@ -120,6 +120,7 @@ Non-negotiable. Apply to every draft, every revision, every edit. Full definitio
 | IR-7 | Cool Point Engineering | Satisfaction = Oppression × Delivery × Surprise. Density: 2-3ch ≥ 1 micro, 5ch ≥ 1 combo, 10-15ch ≥ 1 milestone. Full modes in [excitement-engineering.md](references/excitement-engineering.md). |
 | IR-8 | Psychology 3-Layer + Emotion 4-Level | Use Conscious/Subconscious/Unconscious layers. Match emotion intensity (1-4) to importance. Full techniques in [emotion-psychology.md](references/emotion-psychology.md). |
 | IR-9 | Citation Integrity — Zero Fabrication | Verify ALL factual claims with tool calls before asserting. Never fabricate quotes. Never cite summaries as file content. Mark unverified claims as [未验证]. |
+| IR-10 | Reader Experience Tracking | Eight-dimension tracking (emotion range/interaction density/promise delivery/cool points/experience goals/genre alignment/world-building delivery/activity diversity). Phase 6 structural prevention + Phase 7 per-chapter detection + Phase 8 audit. WARNING→next chapter responds. MUST/CRITICAL→this chapter responds. |
 
 ---
 
@@ -250,9 +251,10 @@ Plan the story's milestone architecture. NOT a per-chapter script — a roadmap 
 2. **Define 3-5 milestones per volume**: the MUST-HAPPEN events that drive the story forward
 3. **Set volume-level tone and tension direction** (rising / peaking / recovering), NOT per-chapter tension numbers
 4. **Leave the space between milestones OPEN** — these will be filled during Phase 7 through discussion
-5. **Create `outline.md`** with volume overview + milestones + tension direction
-6. **Create `timeline.md`** for scene-level time tracking (updated after each chapter)
-7. **Create `foreshadowing-ledger.md`** for foreshadowing tracking (initially empty, populated from Phase 8)
+5. **类型承诺结构审查（MILESTONE-LEVEL GENRE CHECK）**: 加载 `title-synopsis.md`（主题材/副题材/核心卖点），对每个里程碑跨度检查：该跨度内的主导情境是否结构性地支持类型承诺？问："如果主角在这个情境中 N 章，类型承诺能兑现吗？" 连续 ≥5 章的里程碑跨度排除类型活动 → 必须重新设计里程碑（不是等 Phase 7 再修）。**根因：Phase 7 的类型检查是章级检测——如果大纲结构性地排除了类型活动，Phase 7 每章都会触发 MUST_ALIGN 但无力回天。预防必须在 Phase 6。**
+6. **Create `outline.md`** with volume overview + milestones + tension direction
+7. **Create `timeline.md`** for scene-level time tracking (updated after each chapter)
+8. **Create `foreshadowing-ledger.md`** for foreshadowing tracking (initially empty, populated from Phase 8)
 
 **⚠ 规划深度递减原则（防止锚定过死）：**
 - **当前卷（即将写的卷）**：可以列里程碑 + 章节级条目（如黄金三章等关键章节）
@@ -263,8 +265,8 @@ Plan the story's milestone architecture. NOT a per-chapter script — a roadmap 
 Output: `outline.md` (volumes + milestones), `timeline.md` (empty initially), `foreshadowing-ledger.md` (initially empty)
 Detailed guide: [references/outline-template-guide.md](references/outline-template-guide.md)
 Template: [templates/outline-master.md](templates/outline-master.md), [templates/timeline.md](templates/timeline.md), [templates/foreshadowing-ledger.md](templates/foreshadowing-ledger.md)
-Quality gate: every milestone has clear narrative purpose, milestones escalate across volumes, breathing room exists between peaks
-⚠️ VALIDATION REQUIRED: After the outline is complete, check for contradictions with the plot turning points (Phase 5). Ask "does every milestone earn its place?" Before advancing to writing, do a final readiness check — confirm the user is satisfied with the story shape, not just "good enough to start."
+Quality gate: every milestone has clear narrative purpose, milestones escalate across volumes, breathing room exists between peaks, **no milestone span structurally excludes genre promise for ≥5 chapters**, **时间节奏结构审查通过**（每个里程碑有合理的时间跨度规划，里程碑间有跳转点）
+⚠️ VALIDATION REQUIRED: After the outline is complete, check for contradictions with the plot turning points (Phase 5). Ask "does every milestone earn its place?" Then run **类型承诺结构审查**（step 5）+ **时间节奏结构审查**（outline-template-guide.md Smoke Test §7）— confirm every milestone span supports the genre promise and has planned time pacing. Before advancing to writing, do a final readiness check — confirm the user is satisfied with the story shape, not just "good enough to start."
 
 ### Phase 7: Chapter Writing
 
@@ -285,17 +287,17 @@ Write chapters through collaborative discussion. One chapter at a time. Each cha
 
 **Phase A — BEFORE direction proposal (load context):**
 ```
-NOVEL_FORGE_PREFLIGHT_A: preload=pass|fail ir3_context=pass|fail
+NOVEL_FORGE_PREFLIGHT_A: preload=pass|fail ir3_context=pass|fail reader_experience=pass|fail settings_gap=pass|fail foreshadowing_lifecycle=pass|fail
 ```
-Load references per PRE-LOAD, load project state per IR-3, then propose 2-3 direction options.
+Load references per PRE-LOAD, load project state per IR-3, load novel-state.md 读者体验追踪 + 时间节奏追踪（检查 WARNING/MUST 警报），**扫描 world.md + outline.md 识别本章方向需要的场景元素缺口**，**扫描活跃伏笔摘要检查伏笔生命周期阈值（15/30/50）**，then propose 2-3 direction options. WARNING/MUST 警报（含时间节奏 + 伏笔生命周期）必须在方向选项中响应。每个方向选项标注设定缺口（如有）。
 
 **Phase B — BEFORE drafting (after user selects direction):**
 ```
-NOVEL_FORGE_PREFLIGHT_B: direction_proposed=pass|fail user_selected=pass|fail ir1_pov=pass|fail ir2_register=pass|fail|n/a ir6_prose=pass|fail ir5_check=pass|fail
+NOVEL_FORGE_PREFLIGHT_B: direction_proposed=pass|fail user_selected=pass|fail ir1_pov=pass|fail ir2_register=pass|fail|n/a ir6_prose=pass|fail ir5_check=pass|fail reader_experience=pass|fail
 ```
-`direction_proposed=pass` requires 2-3 options actually shown to user. `user_selected=pass` requires explicit user pick/blending. BOTH must be pass before drafting.
+`direction_proposed=pass` requires 2-3 options actually shown to user. `user_selected=pass` requires explicit user pick/blending. `reader_experience=pass` requires Segment 8 (读者体验设计) 已填写（情感目标≠前章，爽点/互动安排已确认）。ALL must be pass before drafting.
 
-1. **Propose 2-3 direction options** for this chapter based on: current volume milestones, prior chapter state snapshot (including Reader Knowledge Delta), reader knowledge gaps (from world.md Reader Delivery Tracker + prior snapshot's 读者认知缺口), and where the story wants to go next. **NOT based on pre-written chapter-level outline entries.** Those entries are Phase 6 guesses — use them as ONE input among many, not as the answer. Each direction option should note: (a) what reader knowledge it delivers or advances, and (b) what reader knowledge it requires readers to already have. If required knowledge is undelivered, the option must include a delivery mechanism (展示后果/对比/新手视角/回忆/对话 — never "As You Know, Bob").
+1. **Propose 2-3 direction options** for this chapter based on: current volume milestones, prior chapter state snapshot (including Reader Knowledge Delta), reader knowledge gaps (from world.md Reader Delivery Tracker + prior snapshot's 读者认知缺口), and where the story wants to go next. **NOT based on pre-written chapter-level outline entries.** Those entries are Phase 6 guesses — use them as ONE input among many, not as the answer. Each direction option should note: (a) what reader knowledge it delivers or advances, (b) what reader knowledge it requires readers to already have, **(c) what settings gaps exist — does this direction require elements not yet in world.md/outline.md/plot.md? If so, classify as major (needs pre-planning) or minor (can emerge during writing).** If required knowledge is undelivered, the option must include a delivery mechanism (展示后果/对比/新手视角/回忆/对话 — never "As You Know, Bob").
 2. **User selects** a direction (or proposes their own, or blends options) — DO NOT draft until user has explicitly chosen
    - *Optional: if user requests writing guidance, activate coach mode — offer 2-3 opening versions, annotate techniques, provide alternate key-scene versions, and post-writing self-assessment. See [references/advanced-workflows.md](references/advanced-workflows.md) Section 一.*
 3. **Load context per IR-3** (P0→P1→P2, 15K char cap, never load full prior chapter)
@@ -318,23 +320,40 @@ After each chapter, create an immutable state snapshot file AND update supportin
 2. **Record chapter summary** (≤200 chars): what happened, what changed
 3. **Record character state changes**: for each character who appeared, capture physical, emotional, location, status, items/skills gained/lost, key changes. Include 伤势追踪表 for any injury. Record knowledge state changes (Knows/Believes/Doesn't Know per character)
 4. **Record relationship changes**: any relationship temperature shifts with cause and direction
-5. **Record foreshadowing updates**: new plants, advances, resolutions, deferrals — with chapter IDs. Update foreshadowing-ledger.md accordingly
+5. **Record foreshadowing updates**: new plants, advances, resolutions, deferrals — with chapter IDs. **对每个活跃伏笔计算无接触章数，更新生命周期状态（pass/浇水候选/WARNING/MUST_RESOLVE）。HARVEST 操作前必须回读种植章节的 state snapshot 验证一致性。** Update foreshadowing-ledger.md accordingly
 6. **Record timeline**: story-internal time position, gap since previous chapter
 7. **Record new elements**: new proper nouns, new locations, new props introduced
 8. **Record open questions**: questions raised, still open, or answered this chapter
 9. **Verify new lore elements** against world.md and characters/ — add consistent new elements to canon files
 10. **Reader knowledge audit**: identify what the READER learned this chapter (separate from character knowledge), assess delivery sufficiency (full / partial / label-only), check world.md Reader Delivery Tracker for unfilled items, update state snapshot's Reader Knowledge Delta. Flag gaps persisting ≥3 chapters as "must deliver next chapter"（详见 state-extraction-guide.md §8）
+10b. **读者体验审计**: 执行九维审计（情感范围/互动密度/承诺兑现/爽点传递/体验目标验证/类型承诺对齐/活动多样性/世界观交付/思维留白）+ 时间节奏审计 + 角色出场追踪审计（命名检查 + 档案创建/升级检查），更新 state-snapshot.md "读者体验 Delta" + novel-state.md "读者体验追踪" + "时间节奏追踪" + "角色出场追踪"（详见 state-extraction-guide.md §9-10）
 11. **Update `timeline.md`** with scene-level entries for this chapter
 12. **Update `novel-state.md`**: add chapter summary to 章节摘要 table, update 活跃伏笔摘要（类型/紧迫度从 foreshadowing-ledger.md 同步）, update 角色状态摘要, update 术语一致性表 and 关键数字表, update current_chapter counter
 13. **Update `knowledge-state.md`**: merge snapshot knowledge changes into cumulative file
 14. **Write Delta Summary**: 3-5 bullet points of the most important changes for quick reference by next chapter
 15. **Run consistency check**: verify state snapshot against chapter text and world rules, flag contradictions
 
-Output: `state/chNNN.md` (immutable snapshot, including Reader Knowledge Delta) + updated `novel-state.md` + updated `timeline.md` + updated `foreshadowing-ledger.md` + updated `knowledge-state.md` + updated `world.md` (if new lore or Reader Delivery Tracker update)
+Output: `state/chNNN.md` (immutable snapshot, including Reader Knowledge Delta + 读者体验 Delta) + updated `novel-state.md` (including 读者体验追踪) + updated `timeline.md` + updated `foreshadowing-ledger.md` + updated `knowledge-state.md` + updated `world.md` (if new lore or Reader Delivery Tracker update) + updated `outline.md`/`plot.md`/`prose_style.md` (if emergent settings require)
 Template: [templates/state-snapshot.md](templates/state-snapshot.md)
 Detailed guide: [references/state-extraction-guide.md](references/state-extraction-guide.md)
 Consistency system: [references/consistency-system.md](references/consistency-system.md)
-Quality gate: state snapshot written (including Reader Knowledge Delta), novel-state.md updated, timeline updated, no contradictions with prior state
+Quality gate: state snapshot written (including Reader Knowledge Delta + 读者体验 Delta), novel-state.md updated (including 读者体验追踪), timeline updated, no contradictions with prior state, 读者体验九维审计完成（含思维留白审计），伏笔生命周期已检查
+
+### Phase 8.5: Volume-End Settings Audit (卷末设定审计)
+
+每卷写完后、下一卷开始前执行。AI 自动执行，执行前先让用户确认审计范围。
+
+**⚠ PRE-LOAD:** `references/outline-template-guide.md` §8（卷末设定审计流程）
+
+1. **审计本卷所有 state 快照** — 检查"涌现设定捕获"记录，汇总本卷所有新设定
+2. **审计所有项目文件** — world.md / outline.md / plot.md / prose_style.md / novel-state.md / timeline.md
+3. **生成审计报告** — 包含补漏/调整/展望三部分（详见 outline-template-guide.md §8）
+4. **呈现给用户审阅** — 用户确认审计范围和发现无遗漏
+5. **用户确认后执行更新** — 更新所有需要变更的文件
+6. **更新 novel-state.md 决策记录** — 新增审计条目
+
+Output: 所有项目文件更新 + novel-state.md 决策记录 + 下一卷设定预规划清单
+Detailed guide: [references/outline-template-guide.md](references/outline-template-guide.md) §8
 
 ---
 

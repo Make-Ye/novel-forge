@@ -155,6 +155,24 @@ The narration should carry the flavor of the POV character's:
 - What they notice (a soldier notices weapons; a merchant notices prices)
 - How they interpret events (colored by their beliefs and biases)
 
+### 思维留白（Thought Transparency）
+
+> 引用 IR-1 思维留白扩展。核心三层原则：感知透明 / 确定的藏 / 碎片安全网。
+
+**写作时的判定流程：**
+1. POV 角色现在在做什么？→ 确定的推理 = 隐藏过程；困惑的探索 = 可展示碎片
+2. 检查是否构成了完整链条 → 是 = 拆碎或删除中间步骤
+3. 确定的推理只留触发（感知到什么）和结论（决定/行动），中间步骤留给读者
+
+**禁止模式（模式描述，不设固定词表）：**
+- "在脑子里排/过/理了一遍"后面跟着完整信息清单
+- 连续多个判断句构成完整逻辑链
+- 对他人行为的完整解读（从行为推导到动机到意图，一条龙）
+- 替读者解释词语差异或言外之意
+- 在行动之前把所有选项和后果分析完毕
+
+**与 IR-8 心理三层的关系：** 思维留白主要影响意识层——意识层只展示"注意"和"决定"，不展示"推导"。潜意识和无意识不受影响（行为矛盾、身体反应本身就是"藏"的艺术）。
+
 ---
 
 ## Dialogue Rules
@@ -294,6 +312,103 @@ After completing each scene, verify:
 - Does the emotion come from character stakes, not authorial description of emotion?
 - Is the emotional tone consistent with the chapter's tension target?
 
+**情感范围检查（每章必检）：**
+```
+加载 novel-state.md "情感范围追踪"：
+□ 本章主导情感是什么？（紧张/释放/好奇/温暖/恐惧/惊奇/满足/悲伤/幽默/愤怒）
+□ 近5章情感分布：是否有连续 ≥3 章同情感？
+→ WARNING(≥3)：下章必须不同
+→ MUST_CHANGE(≥5)：本章必须在写作中调整
+```
+
+**互动密度检查（每章必检）：**
+```
+加载 novel-state.md "互动密度追踪"：
+□ 本章是否有实质性互动（对话 ≥3 轮 或 联合行动 ≥1 场景）？
+□ 连续无互动章数：
+→ WARNING(≥3)：下章必须安排互动
+→ MUST_ADD(≥5)：本章必须安排互动
+```
+
+**活动多样性预检（每章必检）：**
+```
+加载 novel-state.md "活动多样性追踪"：
+□ 近 3 章主角主要活动分别是什么？
+□ 本章计划的活动是否与前 3 章重复？
+→ WARNING(≥3)：本章活动必须与前 3 章不同
+→ MUST_VARY(≥5)：本章必须切换到完全不同的活动类型
+```
+
+**世界观交付预检（每章必检）：**
+```
+加载 novel-state.md "世界观交付追踪" + title-synopsis.md：
+□ 本书承诺的世界观要素有哪些？读者目前理解到什么程度？
+□ 近 8 章是否有世界观交付？
+→ WARNING(≥8)：本章必须包含至少一个世界观交付机会
+→ CRITICAL(整卷无)：本章必须重点交付世界观，优先级最高
+```
+
+**类型承诺预检（每章必检）：**
+```
+加载 title-synopsis.md（主题材/副题材/核心卖点）+ novel-state.md "类型承诺对齐追踪"：
+□ 本书承诺的题材类型是什么？
+□ 本章计划的主导叙事活动是否服务于该类型？
+□ 连续偏离类型承诺章数：
+→ WARNING(≥3)：下章必须对齐
+→ MUST_ALIGN(≥5)：本章必须在写作中调整方向
+```
+
+**类型注入机制（Genre Injection）：**
+
+方向提案生成后，必须检查：是否有任何 IR-10 维度处于 WARNING/MUST/CRITICAL 状态？
+→ 如果是：至少一个方向选项必须专门回应该维度
+→ 如果所有 3 个选项都是同一活动类型：自检失败，必须重新生成至少一个不同类型的选项
+
+具体响应要求：
+- 活动多样性 WARNING/MUST → 至少一个选项的主角活动不同于前 3 章
+- 世界观交付 WARNING/CRITICAL → 至少一个选项包含世界观交付机会
+- 爽点类别 WARNING → 至少一个选项安排不同类别的爽点
+- 时间节奏 WARNING/MUST JUMP → 至少一个选项包含时间跳转或跨天叙事
+
+**伏笔生命周期检查（方向提案时）：**
+
+加载 novel-state.md 活跃伏笔摘要，检查伏笔生命周期阈值：
+- 是否有伏笔达到浇水候选（≥15章无接触）？→ 至少一个方向选项应包含推进该伏笔的机会
+- 是否有伏笔达到 WARNING（≥30章无接触）？→ 本章方向选项必须推进该伏笔（WATERED/HARVEST/WITHERED）
+- 是否有伏笔达到 MUST_RESOLVE（≥50章无接触）？→ 本弧内必须兑现或声明废弃
+- 如本章计划 HARVEST 某个伏笔 → 必须在写作前回读该伏笔种植章节的 state snapshot
+
+**角色命名检查（方向提案时）：**
+
+加载 novel-state.md "角色出场追踪"：
+- 方向中涉及的角色是否仍使用占位名（甲/乙/壮人/灰衣 等）？
+- 如果是，且该角色本弧线内会再次出场 → 方向选项必须包含命名安排
+- 命名方式：自我介绍/他人介绍/叙事中自然交代（不要突兀地"他叫XXX"）
+- 如果角色出场 ≥3 次仍无档案 → 方向选项中应包含该角色的新信息，为档案创建积累素材
+
+### 时间节奏预检（每章必检）
+
+```
+加载 novel-state.md "时间节奏追踪"：
+□ 近 5 章每章故事时间跨度分别是多少？
+□ 本章计划的故事时间跨度是多少？
+□ 连续 <24 小时章数：
+→ WARNING(≥5)：本章必须包含时间跳转或多日跨度
+→ MUST JUMP(≥8)：本章必须包含 ≥2 天的时间跳转或跨天叙事
+```
+
+**章节时间跨度设计原则：**
+
+一章不必等于几小时。一章可以覆盖：
+- **几小时**：高密度冲突、对峙、博弈场景（实时叙事）
+- **一天**：正常节奏，多个事件交织
+- **数天**：压缩叙事，跳过平缓期，用场景切换连接关键节点
+- **一周或更长**：弧线过渡章，开头在旧弧线结尾，结尾在新弧线起点
+
+**不要实时直播。** 读者不需要看到主角的每一顿饭、每一段路、每一个夜晚。只写有冲突、有信息、有情感变化的场景。中间的平缓期用过渡句跳过。
+
+**事件密度原则：** 一天可以发生多件重要的事。不要把事件均匀分散到每一天——把事件压缩到少数几天，让这几天充满张力，然后跳到下一个关键节点。
+
 ### Revision During Writing
 - If you catch a POV violation, fix it immediately — don't note it for later
 - If a scene feels like it's stalling, cut to the next significant moment
@@ -322,6 +437,7 @@ AI不数数。当文本中出现计数性表述时，必须逐字核实：
 - 角色提到境界/等级/势力时 → 对照world.md的层级表，确认不倒挂
 - 低境界角色不应知道高境界的具体信息（感灵境不应随口说出"通灵境加固"）
 - 角色的情报来源必须合理：他怎么知道的？看到了？听到了？猜的？
+- 角色遇到新环境/新势力/新规则时 → 如果 world.md 没有定义，不要回避——创造它，然后在 Phase 8 记录
 
 #### C. 人物行为逻辑
 - 每个角色做每件事时问：**以这个人的身份、处境、阅历，他会这么做吗？**
@@ -337,9 +453,19 @@ AI不数数。当文本中出现计数性表述时，必须逐字核实：
 #### 审查执行方式
 逐章通读时，对每个场景停下来问上述四个问题。不能用grep替代——这些是逻辑问题，不是文本模式问题。
 
-### Analysis Paragraph Anchor Rule（分析段落锚点规则）
+### Analysis Paragraph Anchor Rule（分析段落锚点规则 + 推理链检查）
 
-当章节包含连续的分析/思考段落（角色在回顾、推理、整理信息）时，必须在每2-3个分析段之间插入一个**物理感官锚点**，防止文本退化为"分析报告"质感。
+当章节包含连续的分析/思考段落（角色在回顾、推理、整理信息）时，必须执行两层检查：
+
+**第一层：推理链完整性检查（IR-5 Check 10 前置）**
+- 单个完整推理链段落（即使只有 1 段）也必须检查——是否构成了多步推理链？
+- 完整链不靠"插入感官锚"修复——靠"删除中间步骤"修复
+- 感官锚的作用从"打断分析"升级为"替代分析"——用感官细节传达角色状态，而非用内心分析解释
+
+**第二层：分析段间隔锚点**（原始规则保留）
+- 连续≥3个纯分析段无感官锚 → 标记为需要修复
+- 相邻两个锚点不得使用相同感官通道
+- 锚点必须与分析内容有自然连接，不能硬插
 
 **锚点类型**（每次用不同的）：
 
@@ -350,11 +476,6 @@ AI不数数。当文本中出现计数性表述时，必须逐字核实：
 | 痛觉锚 | "右腿的旧伤在抽。每走几步就歪一下。" |
 | 环境锚 | "碎石在脚底下响了一下。这个声音在安静的夜里格外清楚。" |
 | 动作锚 | "他用右手托了一下放到自然位置。" |
-
-**规则：**
-- 连续≥3个纯分析段无感官锚 → 标记为需要修复
-- 相邻两个锚点不得使用相同感官通道（如不能连续两次都用"风"）
-- 锚点必须与分析内容有自然连接（如分析左臂状态→低头看手），不能硬插
 
 ---
 
@@ -379,9 +500,26 @@ Anti-amplification checklist (run after every 5 chapters):
 
 ---
 
+## 设定缺口识别（Settings Gap Identification）
+
+在概念预算检查之前，先识别本章需要什么、缺什么。
+
+**步骤：**
+1. 回顾本章方向：场景需要哪些世界元素（地点/势力/规则/物品/习俗）？
+2. 检查 world.md：哪些已有？哪些没有？
+3. 检查 outline.md/plot.md：哪些已有规划？哪些是空白？
+4. 分类缺口：
+   - **重大设定**（新区域、新势力、新体系规则）→ 必须在写前规划，写入对应文件
+   - **细节设定**（一个地方的风俗、一种物品、一条暗规）→ 写作中自由发明，Phase 8 捕获
+
+**态度：缺口是机会，不是问题。** 每个缺口都是让世界变得更丰富的机会。
+如果本章方向没有任何设定缺口 → 考虑是否只是在"使用"旧设定而没有"扩展"世界。
+
+---
+
 ## Concept Budget System (概念预算系统)
 
-Prevent info-dump by limiting new concepts per chapter. This is the most effective mechanism against AI's tendency to dump world-building.
+Manage concept delivery pace by allocating concept slots per chapter. Each chapter has a budget — use it wisely for both referencing existing settings AND inventing new ones. Invention is encouraged — new settings that emerge from the plot are the primary way world.md grows.
 
 Rules:
 - Chapter 1: maximum 3 new concepts (world elements, terminology, systems)
@@ -402,6 +540,37 @@ Post-chapter concept audit:
 2. Did any concept get an encyclopedia-style explanation >150 words?
 3. Was every new concept introduced through conflict or character experience?
 4. Are there concepts that can be deferred to a later chapter?
+
+**世界观概念预留（World-Building Reservation）：**
+
+当设定缺口识别发现缺口时：
+- 至少 1 个概念槽位优先用于填补缺口（重大或细节）
+- 重大设定：写前规划并写入对应文件
+- 细节设定：写作中自然引入
+
+当 novel-state.md "世界观交付追踪" 显示连续 ≥5 章无世界观交付时：
+- 本章 2 个新概念额度中，至少 1 个必须预留给世界观概念
+- 世界观概念 = 读者理解世界规则/机制/体系所需的概念
+- 不要求专章解释——可通过角色经历、对话、冲突自然引入
+
+判定是否"世界观赤字"：加载 novel-state.md "世界观交付追踪" 表，检查最近 8 章记录。
+
+---
+
+## 爽点密度预检
+
+在 Concept Budget System 之后、写作之前，检查爽点密度：
+
+```
+加载 novel-state.md "爽点追踪"：
+□ 距上次里程碑爽点：{N}章前
+□ 距上次微兑现：{N}章前
+□ 距上次同类型爽点：{N}章前
+
+阈值判定（参见 excitement-engineering.md）：
+□ 是否需要在本章安排爽点？
+□ 如果安排，类型是什么？（避免与最近2章同类型）
+```
 
 ---
 
